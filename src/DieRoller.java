@@ -1,42 +1,58 @@
 import java.util.Random;
+import java.util.Scanner;
 public class DieRoller {
     public static void main(String[] args) {
 
         Random generator = new Random();
 
-        System.out.print("Roll  Die1  Die2  Die3  Sum\n");
+        Scanner in = new Scanner(System.in);
 
-        System.out.print("---------------------------");
+        boolean keepPlaying = true;
 
-        int rollCount = 0;
+        String input = "";
 
-        int dieSum = 0;
+        while(keepPlaying)  {
+            System.out.print("Roll  Die1  Die2  Die3  Sum\n");
 
-        do {
-            int dieOne = generator.nextInt(6)+1;
+            System.out.print("---------------------------");
 
-            int dieTwo = generator.nextInt(6)+1;
+            int rollCount = 0;
 
-            int dieThree = generator.nextInt(6)+1;
+            int dieSum = 0;
 
-            rollCount += 1;
 
-            dieSum = dieOne + dieTwo + dieThree;
+            do {
+                int dieOne = generator.nextInt(6) + 1;
 
-            System.out.printf("\n%d     %d     %d     %d     %d   ",rollCount,dieOne,dieTwo,dieThree,dieSum);
+                int dieTwo = generator.nextInt(6) + 1;
 
-            if (dieOne == dieTwo && dieTwo == dieThree){
+                int dieThree = generator.nextInt(6) + 1;
 
-                break;
+                rollCount += 1;
+
+                dieSum = dieOne + dieTwo + dieThree;
+
+                System.out.printf("\n%d     %d     %d     %d     %d   ", rollCount, dieOne, dieTwo, dieThree, dieSum);
+
+                if (dieOne == dieTwo && dieTwo == dieThree) {
+
+                    break;
+
+                }
+
+
+            } while (true);
+
+            System.out.print("\nWould you like to play again?(Y/N): ");
+
+            input = in.next();
+
+            if (!input.equalsIgnoreCase("y")) {  //if user inputs anything but y it will terminate program
+
+                keepPlaying = false;
             }
-            else {
-
-                continue;
-            }
 
 
-
-        }while(true);
-
+        }
     }
     }
